@@ -3,10 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import { Button, Alert } from 'iview';
+import { Input } from 'iview';
 import 'iview/dist/styles/iview.css';
-Vue.component('Button', Button);
-Vue.component('Alert', Alert);
+Vue.component('Input', Input)
 
 Vue.config.productionTip = false;
 
