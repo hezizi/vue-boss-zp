@@ -7,6 +7,8 @@ import { Input } from 'iview';
 import 'iview/dist/styles/iview.css';
 Vue.component('Input', Input)
 
+import '@/assets/style/public.scss'
+
 Vue.config.productionTip = false;
 
 new Vue({
