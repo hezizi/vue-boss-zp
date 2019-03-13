@@ -53,21 +53,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .input-group {
-    max-width: 500px;
-    margin: auto;
-    padding: 20px;
-    .input-item {
-      margin: 6px 0 10px;
-      label {
-        display: inline-block;
-        margin-bottom: 6px;
+  .login {
+    height: calc(100vh);
+    background-image: url('../assets/images/bg-boss.jpg');
+    background-size: cover;
+    .input-group {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, .3);
+      .input-item {
+        margin: 6px 0 10px;
+        label {
+          display: inline-block;
+          margin-bottom: 6px;
+          color: #fff;
+        }
       }
-    }
-    button {
-      height: 40px;
-      margin-bottom: 10px;
-      font-size: 16px;
+      button {
+        height: 40px;
+        margin: 10px 0;
+        font-size: 16px;
+      }
     }
   }
 </style>

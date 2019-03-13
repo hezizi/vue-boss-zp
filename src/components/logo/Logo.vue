@@ -18,7 +18,10 @@ export default {
 
 <style lang="scss" scoped>
   .logo-container{
-    margin: 50px 0 20px;
+    padding: 40px 0;
     text-align: center;
+    img {
+      width: 180px;
+    }
   }
 </style>
