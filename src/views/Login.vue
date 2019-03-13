@@ -3,7 +3,7 @@
     <Logo />
     <div class="input-group oh">
       <div class="input-item">
-        <span class="ar">用户名：</span>
+        <label>用户名：</label>
         <Input
           v-model="username"
           placeholder="请输入用户名"
@@ -12,7 +12,7 @@
       </div>
       <div class="oh">
         <div class="input-item">
-          <span class="ar">密码：</span>
+          <label>密码：</label>
           <Input
             v-model="password"
             type="password"
@@ -21,6 +21,8 @@
           />
         </div>
       </div>
+      <Button type="primary" long @click="login">登录</Button>
+      <Button type="default" long @click="register">注册</Button>
     </div>
   </div>
 </template>
@@ -38,20 +40,34 @@ export default {
   },
   components: {
     Logo
-  }
+  },
+  methods: {
+    login() {
+      console.log(this.username)
+    },
+    register() {
+      this.$router.push('/register')
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
   .input-group {
-    padding: 0 20px;
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
     .input-item {
-      display: flex;
-      align-items: center;
-      margin: 6px 0;
-      span {
-        min-width: 60px;
+      margin: 6px 0 10px;
+      label {
+        display: inline-block;
+        margin-bottom: 6px;
       }
+    }
+    button {
+      height: 40px;
+      margin-bottom: 10px;
+      font-size: 16px;
     }
   }
 </style>

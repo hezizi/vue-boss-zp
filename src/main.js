@@ -3,11 +3,12 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import { Input } from 'iview';
+import { Input, Button } from 'iview';
 import 'iview/dist/styles/iview.css';
-Vue.component('Input', Input)
+Vue.component('Input', Input);
+Vue.component('Button', Button);
 
-import '@/assets/style/public.scss'
+import '@/assets/style/public.scss';
 
 Vue.config.productionTip = false;
 

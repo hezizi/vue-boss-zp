@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "iview": "^3.3.0",
+    "mongoose": "^5.4.19",
     "node-sass": "^4.11.0",
     "sass": "^1.17.2",
     "sass-loader": "^7.1.0",
