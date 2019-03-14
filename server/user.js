@@ -3,7 +3,7 @@ const router = new Router();
 // const model = require('./model');
 // const User = model.getModel('user');
 
-router.post('/login', ctx => {
+router.get('/login', async ctx => {
   ctx.body = 'hahaha'
 })
 

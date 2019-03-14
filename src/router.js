@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Login from "./views/Login";
-import Register from "./views/Register";
+import Login from "./views/login-register/Login";
+import Register from "./views/login-register/Register";
 
 Vue.use(Router);
 
@@ -10,7 +10,11 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: "/",
+      path: '/',
+      redirect: '/login'
+    },
+    {
+      path: "/login",
       name: "login",
       component: Login
     },

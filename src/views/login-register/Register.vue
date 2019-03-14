@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="common-box register">
     <Logo />
     <div class="input-group oh">
       <div class="input-item">
@@ -21,17 +21,18 @@
           />
         </div>
       </div>
-      <Button type="primary" long @click="login">登录</Button>
-      <Button type="default" long @click="register">注册</Button>
+      <Button type="primary" long @click="register">注册</Button>
+      <Button type="default" long @click="login">登录</Button>
     </div>
   </div>
 </template>
 
 <script>
+import './common.scss';
 import Logo from '@/components/logo/Logo';
 
 export default {
-  name: 'login',
+  name: 'register',
   data() {
     return {
       username: '',
@@ -43,38 +44,15 @@ export default {
   },
   methods: {
     login() {
-      console.log(this.username)
+      this.$router.push('/login')
     },
     register() {
-      this.$router.push('/register')
+      console.log()
     }
   },
 }
 </script>
 
-<style lang="scss" scoped>
-  .login {
-    height: calc(100vh);
-    background-image: url('../assets/images/bg-boss.jpg');
-    background-size: cover;
-    .input-group {
-      max-width: 500px;
-      margin: auto;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, .3);
-      .input-item {
-        margin: 6px 0 10px;
-        label {
-          display: inline-block;
-          margin-bottom: 6px;
-          color: #fff;
-        }
-      }
-      button {
-        height: 40px;
-        margin: 10px 0;
-        font-size: 16px;
-      }
-    }
-  }
+<style lang="" scoped>
+  
 </style>
