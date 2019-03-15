@@ -73,7 +73,9 @@ export default {
           type: this.type
         })
         .then(res => {
-          console.log(res)
+          if (res.status === 200 && res.data.code === 0) {
+            
+          }
         })
         .catch(err => {
           console.log(err)
