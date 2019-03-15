@@ -2,10 +2,21 @@
 const mongoose = require('mongoose');
 
 // mongoose连接mongodb数据库, 数据库名为 vue-boss
-mongoose.connect('mongodb://localhost:27017/vue-boss');
-mongoose.connection.on('connected', () => {
-  console.log('mongodb数据库连接成功!!!');
-})
+// mongoose.connect('mongodb://localhost:27017/vue-boss');
+// mongoose.connection.on('connected', () => {
+//   console.log('mongodb数据库连接成功!!!');
+// })
+
+mongoose.connect(
+    'mongodb://localhost:27017/vue-boss', 
+    { useNewUrlParser: true }
+  )
+  .then(() => {
+    console.log('mongodb数据库连接成功!!!')
+  })
+  .catch(err => {
+    console.log(err)
+  })
 
 const models = {
   user: {
