@@ -88,7 +88,7 @@ export default {
 <style lang="scss" scoped>
   .ivu-radio-group {
     display: flex;
-    margin: 12px 0;
+    margin: 6px 0;
     .radio {
       margin-right: 20px;
       font-size: 16px;

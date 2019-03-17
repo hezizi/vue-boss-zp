@@ -10,7 +10,10 @@ const User = model.getModel('user');
 
 // module.exports = router;
 
-// 注册
+/**
+ * @route POST /pi/login
+ * @desc 注册接口地址 保存注册信息
+ */
 router.post('/register', async ctx => {
   const { username, password, type } = ctx.request.body;
   const findRes = await User.find({username});
