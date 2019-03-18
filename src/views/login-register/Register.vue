@@ -47,6 +47,7 @@ import './common.scss';
 import Logo from '@/components/logo/Logo';
 
 import axios from 'axios';
+import { mapState } from 'vuex';
 
 export default {
   name: 'register',
@@ -62,19 +63,34 @@ export default {
     Logo
   },
   methods: {
+    // ...mapState(['userInfo']),
     login() {
       this.$router.push('/login')
     },
     register() {
+      // console.log(this.userInfo)
+      let { username, password, passwordSure, type } = this;
+      if (!username) {
+        alert('请填写用户名')
+        return
+      }
+      if (!password) {
+        alert('请设置密码')
+        return
+      }
+      if (!passwordSure) {
+        alert('请输入确认密码')
+        return
+      }
       axios
         .post('/api/register', {
-          username: this.username,
-          password: this.password,
-          type: this.type
+          username,
+          password,
+          type
         })
         .then(res => {
           if (res.status === 200 && res.data.code === 0) {
-            
+            this.$store.dispatch('userInfo', { username, password, passwordSure, type })
           }
         })
         .catch(err => {

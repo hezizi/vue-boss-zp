@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import store from "./store/store";
 
 import { Input, Button, RadioGroup, Radio } from 'iview';
 import 'iview/dist/styles/iview.css';
