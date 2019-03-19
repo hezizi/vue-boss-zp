@@ -57,4 +57,10 @@ router.post('/login', async ctx => {
   ctx.body = {code: 0, data: loginRes}
 })
 
+
+router.get('/delete', async ctx => {
+  let res = await User.deleteMany({});
+  ctx.body = res
+})
+
 module.exports = router.routes();

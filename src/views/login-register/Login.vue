@@ -31,6 +31,8 @@
 import './common.scss';
 import Logo from '@/components/logo/Logo';
 
+import { mapState } from 'vuex';
+
 export default {
   name: 'login',
   data() {

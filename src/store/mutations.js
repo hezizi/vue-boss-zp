@@ -7,7 +7,7 @@
 import { USER_INFO } from './mutation-type';
 
 export default {
-  [USER_INFO] (state, userInfo) {
-    state.userInfo = userInfo
+  [USER_INFO] (state, user) {
+    state.user = user
   }
 }

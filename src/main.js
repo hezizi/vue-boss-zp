@@ -3,7 +3,12 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store/store";
 
-import { Input, Button, RadioGroup, Radio } from 'iview';
+import {
+  Input,
+  Button,
+  RadioGroup,
+  Radio
+} from 'iview';
 import 'iview/dist/styles/iview.css';
 Vue.component('Input', Input);
 Vue.component('Button', Button);
