@@ -67,9 +67,9 @@ export default {
     login() {
       this.$router.push('/login')
     },
-    async register() {
+    register() {
       let { username, password, passwordSure, type } = this;
-      await this.userInfo({ username, password, passwordSure, type });
+      this.userInfo({ username, password, passwordSure, type });
       if (!this.getErrMsg()) {return false}
       this.$Message.info(this.getErrMsg())
     }
