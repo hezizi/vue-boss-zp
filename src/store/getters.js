@@ -4,7 +4,8 @@
  */
 
 export default {
-  getErrMsg(state) {
-    return state.user.msg
+  getErrMsg({user}) {
+    console.log(user)
+    return user.msg
   }
 }
