@@ -3,11 +3,17 @@
  * 只能处理同步操作，直接与state交互
  */
 
-
-import { USER_INFO } from './mutation-type';
+import { AUTH_SUCCESS, ERR_MSG } from './mutation-type';
 
 export default {
-  [USER_INFO] (state, user) {
-    state.user = user
+  // 验证通过将用户信息保存到 state 中
+  [AUTH_SUCCESS] (state, user) {
+    state.user = user;
+  },
+  // 验证失败将错误信息保存到 state 中
+  [ERR_MSG] (state, msg) {
+    // state.user.msg = msg;
+    // Vue.set(state.user, 'msg', msg)
+    state.user = {msg}
   }
 }

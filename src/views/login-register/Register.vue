@@ -38,7 +38,6 @@
       </RadioGroup>
       <Button type="primary" long @click="register">注册</Button>
       <Button type="default" long @click="login">登录</Button>
-      <!-- <h2>{{ user }}</h2> -->
     </div>
   </div>
 </template>
@@ -47,8 +46,7 @@
 import './common.scss';
 import Logo from '@/components/logo/Logo';
 
-import axios from 'axios';
-import { mapState, mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'register',
@@ -63,56 +61,17 @@ export default {
   components: {
     Logo
   },
-  
-  computed: {
-    ...mapState(['user'])
-    // ...mapState({
-    //   user: 'user'
-    // })
-  },
-  // computed: mapState({
-  //   // userI: 'user'
-  //   userI: state => state.user
-  // }),
-  // computed: {
-  //   userI() {
-  //     return this.$store.state.user
-  //   }
-  // },
-
   methods: {
     ...mapActions(['userInfo']),
+    ...mapGetters(['getErrMsg']),
     login() {
       this.$router.push('/login')
     },
     register() {
       let { username, password, passwordSure, type } = this;
-      if (!username) {
-        alert('请填写用户名')
-        return
-      }
-      if (!password) {
-        alert('请设置密码')
-        return
-      }
-      if (!passwordSure) {
-        alert('请输入确认密码')
-        return
-      }
-      axios
-        .post('/api/register', {
-          username,
-          password,
-          type
-        })
-        .then(res => {
-          if (res.status === 200 && res.data.code === 0) {
-            this.userInfo({ username, password, passwordSure, type });
-          }
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      this.userInfo({ username, password, passwordSure, type });
+      if (!this.getErrMsg()) {return}
+      this.$Message.info(this.getErrMsg())
     }
   },
 }

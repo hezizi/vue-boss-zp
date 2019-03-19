@@ -2,5 +2,6 @@
  * @desc mutation type
  */
 
-// 用户注册信息
-export const USER_INFO = 'user_info';
+
+export const AUTH_SUCCESS = 'auth_success';   // 验证通过
+export const ERR_MSG = 'err_msg';   // 错误信息
