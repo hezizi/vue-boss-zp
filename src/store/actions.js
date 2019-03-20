@@ -27,7 +27,6 @@ export default {
       commit(ERR_MSG, '请填写两次密码不一致，请重新输入用户名')
       return
     }
-    // 使用 async await 保证commit mutation得到状态在返回给注册组件
     let res = await axios.post('/api/register', {
       username,
       password,

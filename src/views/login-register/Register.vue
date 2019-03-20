@@ -67,6 +67,7 @@ export default {
     login() {
       this.$router.push('/login')
     },
+    // 使用 async await 保证commit mutation得到状态在返回给注册组件
     async register() {
       let { username, password, passwordSure, type } = this;
       await this.userInfo({ username, password, passwordSure, type });
