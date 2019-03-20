@@ -1,10 +1,13 @@
 .common-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: calc(100vh);
   background-image: url('../../assets/images/bg-boss.jpg');
   background-size: cover;
   .input-group {
-    max-width: 500px;
-    margin: auto;
+    width: 460px;
     padding: 20px;
     box-shadow: 0 0 20px rgba(255, 255, 255, .3);
     .input-item {

@@ -1,6 +1,6 @@
 <template>
   <div class="common-box register">
-    <Logo />
+    <!-- <Logo /> -->
     <div class="input-group oh">
       <div class="input-item">
         <label>用户名：</label>
