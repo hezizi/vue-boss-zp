@@ -1,6 +1,6 @@
 <template>
   <div class="common-box register">
-    <Logo />
+    <!-- <Logo /> -->
     <div class="input-group oh">
       <div class="input-item">
         <label>用户名：</label>
@@ -67,10 +67,11 @@ export default {
     login() {
       this.$router.push('/login')
     },
+    // 使用 async await 保证commit mutation得到状态在返回给注册组件
     async register() {
       let { username, password, passwordSure, type } = this;
       await this.userInfo({ username, password, passwordSure, type });
-      if (!this.getErrMsg()) {return false}
+      if (!this.getErrMsg()) {return}
       this.$Message.info(this.getErrMsg())
     }
   }, 

@@ -5,7 +5,6 @@
 
 export default {
   getErrMsg({user}) {
-    console.log(user)
     return user.msg
   }
 }
