@@ -44,7 +44,7 @@ router.post('/register', async ctx => {
 
 
 /**
- * @route POST /pi/login
+ * @route POST /api/login
  * @desc 登录接口地址 放回token 
  */
 router.post('/login', async ctx => {
@@ -61,6 +61,15 @@ router.post('/login', async ctx => {
 router.get('/delete', async ctx => {
   let res = await User.deleteMany({});
   ctx.body = res
+})
+
+/**
+ * @route GET /api/avatarlist
+ * @desc 用户信息完善头像选择
+ */
+const avatarList = require('../src/api/avatarlist.json');
+router.get('/avatarlist', async ctx => {
+  ctx.body = avatarList
 })
 
 module.exports = router.routes();
