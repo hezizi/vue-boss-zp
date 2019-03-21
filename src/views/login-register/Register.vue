@@ -33,7 +33,7 @@
         </div>
       </div>
       <RadioGroup v-model="type">
-        <Radio class="radio df df-aic" label="Boss"></Radio>
+        <Radio class="radio df df-aic" label="boss"></Radio>
         <Radio class="radio df df-aic" label="大佬"></Radio>
       </RadioGroup>
       <Button type="primary" long @click="register">注册</Button>
@@ -55,7 +55,7 @@ export default {
       username: '',
       password: '',
       passwordSure: '',
-      type: 'Boss'
+      type: 'boss'
     }
   },
   components: {
@@ -71,7 +71,13 @@ export default {
     async register() {
       let { username, password, passwordSure, type } = this;
       await this.userInfo({ username, password, passwordSure, type });
-      if (!this.getErrMsg()) {return}
+      // 如果注册成功，则获取注册信息，跳转到相应的路由
+      if (!this.getErrMsg()) {
+        let { redirectTo } = this.$store.state.user;
+        this.$router.push(redirectTo)
+        return
+      }
+      // 如果有errMsg，则提示报错信息
       this.$Message.info(this.getErrMsg())
     }
   }, 

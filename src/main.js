@@ -8,13 +8,17 @@ import {
   Button,
   RadioGroup,
   Radio,
-  Message
+  Message,
+  Modal,
+  Icon
 } from 'iview';
 import 'iview/dist/styles/iview.css';
 Vue.component('Input', Input);
 Vue.component('Button', Button);
 Vue.component('RadioGroup', RadioGroup);
 Vue.component('Radio', Radio);
+Vue.component('Modal', Modal);
+Vue.component('Icon', Icon);
 
 // 全局注册Message
 Vue.prototype.$Message = Message;
