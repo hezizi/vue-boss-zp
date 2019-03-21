@@ -1,14 +1,17 @@
 <template>
   <div class="">
+    <div class="selected-avatar df-jcc">
+      <Avatar :src="selectedAvatar"></Avatar>
+    </div>
     <Button type="primary" @click="modal = true">选择头像</Button>
     <Modal
       title="选择头像"
       v-model="modal"
       :mask-closable="false"
       @on-ok="ok"
-      @on-cancel="current = -1"
+      @on-cancel="cancle"
     >
-      <div class="avatar-wrapper df">
+      <div class="avatar-modal df">
         <div 
           class="avatar df-aic df-jcc cp"
           v-for="(item, index) in avatarList" 
@@ -33,6 +36,7 @@ export default {
     return {
       modal: false,
       current: -1,
+      selectedAvatar: '',
       avatarList: [{
         id: 1,
         pic: require('../../assets/images/boy.png'),
@@ -83,21 +87,29 @@ export default {
 
     selectAvatar(item, index) {
       this.current = index;
+      this.selectedAvatar = item.pic;
     },
     ok() {
-      console.log(this.current)
       if (this.current !== -1) {
-        
+        return
       }
       this.modal = true;
+      console.log(this.modal)
       this.$Message.info('请选择头像');
+    },
+    cancle() {
+      this.current = -1;
+      this.selectedAvatar = '';
     }
   },
 }
 </script>
 
 <style lang="scss" scoped>
-  .avatar-wrapper {
+  .selected-avatar {
+    margin-bottom: 12px;
+  }
+  .avatar-modal {
     flex-wrap: wrap;
     .avatar {
       flex-direction: column;

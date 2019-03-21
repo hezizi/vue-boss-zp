@@ -10,7 +10,8 @@ import {
   Radio,
   Message,
   Modal,
-  Icon
+  Icon,
+  Avatar
 } from 'iview';
 import 'iview/dist/styles/iview.css';
 Vue.component('Input', Input);
@@ -19,6 +20,7 @@ Vue.component('RadioGroup', RadioGroup);
 Vue.component('Radio', Radio);
 Vue.component('Modal', Modal);
 Vue.component('Icon', Icon);
+Vue.component('Avatar', Avatar);
 
 // 全局注册Message
 Vue.prototype.$Message = Message;
