@@ -73,7 +73,7 @@ export default {
       if (!this.getErrMsg()) {return false}
       this.$Message.info(this.getErrMsg())
     }
-  },
+  }, 
 }
 </script>
 
