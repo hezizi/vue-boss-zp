@@ -8,8 +8,6 @@
       title="选择头像"
       v-model="modal"
       :mask-closable="false"
-      @on-ok="ok"
-      @on-cancel="cancle"
     >
       <div class="avatar-modal df">
         <div 
@@ -22,6 +20,10 @@
           <img :src="item.pic" alt="">
           <p>{{item.text}}</p>
         </div>
+      </div>
+      <div slot="footer">
+        <Button @click="cancle">取消</Button>
+        <Button type="primary" @click="ok">确定</Button>
       </div>
     </Modal>
   </div>
@@ -91,15 +93,18 @@ export default {
     },
     ok() {
       if (this.current !== -1) {
-        return
+        this.modal = false;
+        return;
       }
-      this.modal = true;
-      console.log(this.modal)
       this.$Message.info('请选择头像');
     },
     cancle() {
+      this.modal = false;
       this.current = -1;
-      this.selectedAvatar = '';
+      console.log(this.selectedAvatar)
+      if (!this.selectedAvatar) {
+        this.selectedAvatar = ''
+      }
     }
   },
 }
