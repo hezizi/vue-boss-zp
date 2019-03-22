@@ -11,7 +11,8 @@ import {
   Message,
   Modal,
   Icon,
-  Avatar
+  Avatar,
+  Spin
 } from 'iview';
 import 'iview/dist/styles/iview.css';
 Vue.component('Input', Input);
@@ -24,6 +25,7 @@ Vue.component('Avatar', Avatar);
 
 // 全局注册Message
 Vue.prototype.$Message = Message;
+Vue.prototype.$Spin = Spin;
 // Vue.prototype.$Message.config({
 //   top: '100'
 // })
