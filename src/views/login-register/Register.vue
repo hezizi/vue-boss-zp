@@ -1,6 +1,5 @@
 <template>
   <div class="common-box register">
-    <Loading />
     <!-- <Logo /> -->
     <div class="input-group oh">
       <div class="input-item">
@@ -48,7 +47,6 @@ import '@/assets/style/input.scss';
 import './common.scss';
 
 import Logo from '@/components/logo/Logo';
-import Loading from '@/components/loading/Loading';
 
 import { mapActions, mapGetters } from 'vuex';
 
@@ -63,8 +61,7 @@ export default {
     }
   },
   components: {
-    Logo,
-    Loading
+    Logo
   },
   methods: {
     ...mapActions(['userInfo']),

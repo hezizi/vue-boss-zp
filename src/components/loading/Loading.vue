@@ -1,12 +1,12 @@
 <template>
-  <div class="loading">
+  <div class="loading df-aic df-jcc" v-if="this.$store.state.loading">
     <Icon 
       type="ios-loading" 
       size=18 
       class="demo-spin-icon-load"
-      v-if="show"
     >
     </Icon>
+    加载中...
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
   name: 'loading',
   data() {
     return {
-      show: false
+      
     }
   }
 }
@@ -36,12 +36,20 @@ export default {
     border: 1px solid #eee;
   }
   .loading {
+    z-index: 99;
+    flex-direction: column;
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 40px;
-    height: 40px;
-    margin-left: -20px;
-    margin-top: -20px;
+    width: 80px;
+    height: 80px;
+    margin-left: -40px;
+    margin-top: -40px;
+    color: #fff;
+    background-color: rgba(51, 51, 51, .5);
+    .demo-spin-icon-load {
+      margin-bottom: 4px;
+      font-size: 46px !important;
+    }
   }
 </style>
