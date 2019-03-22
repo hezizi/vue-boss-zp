@@ -3,7 +3,7 @@
     <NavBar><p slot="title">大佬信息完善</p></NavBar>
     <div class="content-wrapper df-aic df-jcc">
       <!-- 图像选择 -->
-      <SelectAvatar />
+      <SelectAvatar @sendAvatar="receiveAvatar"/>
       <!-- 输入框组 -->
       <div class="input-group">
         <div class="input-item">
@@ -38,11 +38,15 @@ import '@/assets/style/input.scss';
 import NavBar from '@/components/navbar/NavBar';
 import SelectAvatar from '@/components/select-avatar/SelectAvatar';
 
+import { mapActions } from 'vuex';
+
 export default {
   name: 'genuisinfo',
   data() {
     return {
-      
+      avatar: '',
+      title: '',
+      desc: ''
     }
   },
   components: {
@@ -50,8 +54,21 @@ export default {
     SelectAvatar
   },
   methods: {
-    saveInfo() {
-      
+    ...mapActions(['completeInfo']),
+      // 接收子组件传递过来的头像值
+    receiveAvatar(val) {
+      this.avatar = val
+    },
+    async saveInfo() {
+      let { avatar, title, desc } = this;
+      if (!avatar || !title || !desc) {
+        this.$Message.info('信息请填写完整')
+        return
+      }
+      await this.completeInfo({ avatar, title, desc })
+      // 获取vuex中的redirectTo值，根据redirectTo来跳转页面
+      let { redirectTo } = this.$store.state.user;
+      this.$router.push(redirectTo)
     }
   },
 }

@@ -9,7 +9,7 @@
         <div class="input-item">
           <label>公司名称</label>
           <Input
-            v-model="compony"
+            v-model="company"
             placeholder="请输入公司名称"
             clearable 
           />
@@ -58,12 +58,14 @@ import '@/assets/style/input.scss';
 import NavBar from '@/components/navbar/NavBar';
 import SelectAvatar from '@/components/select-avatar/SelectAvatar';
 
+import { mapActions } from 'vuex';
+
 export default {
   name: 'bossinfo',
   data() {
     return {
       avatar: '',
-      compony: '',
+      company: '',
       title: '',
       money: '',
       desc: ''
@@ -74,17 +76,21 @@ export default {
     SelectAvatar
   },
   methods: {
+    ...mapActions(['completeInfo']),
     // 接收子组件传递过来的头像值
     receiveAvatar(val) {
       this.avatar = val
     },
-    saveInfo() {
-      let { avatar, compony, title, money, desc } = this;
-      if (!avatar || !compony || !title || !money ||!desc) {
+    async saveInfo() {
+      let { avatar, company, title, money, desc } = this;
+      if (!avatar || !company || !title || !money ||!desc) {
         this.$Message.info('信息请填写完整')
         return
       }
-      
+      await this.completeInfo({ avatar, company, title, money, desc })
+      // 获取vuex中的redirectTo值，根据redirectTo来跳转页面
+      let { redirectTo } = this.$store.state.user;
+      this.$router.push(redirectTo)
     }
   },
 }

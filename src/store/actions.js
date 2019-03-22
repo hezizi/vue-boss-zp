@@ -7,10 +7,10 @@ import axios from 'axios';
 
 import { AUTH_SUCCESS, ERR_MSG } from './mutation-type';
 
-// 保存用户填写的相关信息
 export default {
+  // 保存用户填写的相关信息
   async userInfo({commit}, userInfo) {
-    let { username, password, passwordSure, type } = userInfo;
+    const { username, password, passwordSure, type } = userInfo;
     if (!username) {
       commit(ERR_MSG, '请填写用户名')
       return
@@ -27,7 +27,7 @@ export default {
       commit(ERR_MSG, '请填写两次密码不一致，请重新输入用户名')
       return
     }
-    let res = await axios.post('/api/register', {
+    const res = await axios.post('/api/register', {
       username,
       password,
       type
@@ -37,5 +37,14 @@ export default {
     } else {
       commit(ERR_MSG, res.data.msg)
     }
+  },
+  // 保存用户完善信息
+  async completeInfo({commit}, completeInfo) {
+    const res = await axios.post('/api/completeinfo', completeInfo)
+    if (res.status === 200 && res.data.code === 0) {
+      commit(AUTH_SUCCESS, res.data.data)
+      return
+    } 
+    commit(ERR_MSG, res.data.msg)
   }
 }

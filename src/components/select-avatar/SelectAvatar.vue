@@ -40,6 +40,7 @@ export default {
       current: -1,
       selectingAvatar: '',
       selectedAvatar: '',
+      avatarText: '',
       avatarList: [{
         id: 1,
         pic: require('../../assets/images/boy.png'),
@@ -91,13 +92,14 @@ export default {
     selectAvatar(item, index) {
       this.current = index;
       this.selectingAvatar = item.pic;
+      this.avatarText = item.text;
     },
     ok() {
       if (this.current !== -1) {
         this.selectedAvatar = this.selectingAvatar;
         this.modal = false;
         // 将所选头像传给父组件
-        this.$emit('sendAvatar', this.selectedAvatar)
+        this.$emit('sendAvatar', this.avatarText)
         return;
       }
       this.$Message.info('请选择头像');
