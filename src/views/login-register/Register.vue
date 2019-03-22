@@ -16,7 +16,7 @@
           <Input
             v-model="password"
             type="password"
-            placeholder="请输入用密码"
+            placeholder="请输入密码"
             clearable 
           />
         </div>
@@ -43,7 +43,9 @@
 </template>
 
 <script>
+import '@/assets/style/input.scss';
 import './common.scss';
+
 import Logo from '@/components/logo/Logo';
 
 import { mapActions, mapGetters } from 'vuex';

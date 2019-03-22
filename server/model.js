@@ -33,7 +33,7 @@ const models = {
       required: true
     },
     // 头像
-    'avator': {
+    'avatar': {
       type: String
     },
     // 简介

@@ -28,7 +28,9 @@
 </template>
 
 <script>
+import '@/assets/style/input.scss';
 import './common.scss';
+
 import Logo from '@/components/logo/Logo';
 
 import { mapState } from 'vuex';

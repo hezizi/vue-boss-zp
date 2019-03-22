@@ -38,6 +38,7 @@ export default {
     return {
       modal: false,
       current: -1,
+      selectingAvatar: '',
       selectedAvatar: '',
       avatarList: [{
         id: 1,
@@ -89,11 +90,14 @@ export default {
 
     selectAvatar(item, index) {
       this.current = index;
-      this.selectedAvatar = item.pic;
+      this.selectingAvatar = item.pic;
     },
     ok() {
       if (this.current !== -1) {
+        this.selectedAvatar = this.selectingAvatar;
         this.modal = false;
+        // 将所选头像传给父组件
+        this.$emit('sendAvatar', this.selectedAvatar)
         return;
       }
       this.$Message.info('请选择头像');
@@ -101,10 +105,6 @@ export default {
     cancle() {
       this.modal = false;
       this.current = -1;
-      console.log(this.selectedAvatar)
-      if (!this.selectedAvatar) {
-        this.selectedAvatar = ''
-      }
     }
   },
 }
