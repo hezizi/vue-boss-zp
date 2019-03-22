@@ -7,6 +7,10 @@ import { AUTH_SUCCESS, ERR_MSG } from './mutation-type';
 import Utils from '@/utils/index';
 
 export default {
+  // 显示loading加载
+  loading(state, val) {
+    state.loading = val;
+  },
   // 验证通过将用户信息保存到 state 中
   [AUTH_SUCCESS] (state, user) {
     state.user = {...user, redirectTo: Utils.getRedirectPath(user)}
