@@ -9,9 +9,10 @@ import { AUTH_SUCCESS, ERR_MSG } from './mutation-type';
 
 export default {
   // 显示loading加载
-  showLoading({commit}, val) {
-    commit('loading', val)
-  },
+  // showLoading({commit}, val) {
+  //   commit('loading', val)
+  // },
+  
   // 保存用户填写的相关信息
   async userInfo({commit}, userInfo) {
     const { username, password, passwordSure, type } = userInfo;
