@@ -44,11 +44,11 @@ router.beforeEach((to, from, next) => {
       next('/')
       return
     }
-    // 如果跳转的路由在路由配置中不存在，则直接跳转到注册页
-    // if (!to.name) {
-    //   next({path: from.path})
-    //   return
-    // }
+    // 如果未匹配到路由
+    if (!to.name) {
+      next({path: from.path})
+      return
+    }
     next()
     return
   }

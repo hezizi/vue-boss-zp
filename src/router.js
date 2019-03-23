@@ -36,9 +36,9 @@ export default new Router({
       name: "genuisinfo",
       component: GenuisInfo
     },
-    {
-      path: "*",
-      component: NotFound
-    }
+    // {
+    //   path: "*",
+    //   component: NotFound
+    // }
   ]
 });
