@@ -54,11 +54,20 @@ export default {
   },
   // 登录action
   async loginAction({commit}, user) {
+    const { username, password } = user;
+    if (!username) {
+      commit(ERR_MSG, '请输入用户名')
+      return
+    }
+    if (!password) {
+      commit(ERR_MSG, '请输入密码')
+      return
+    }
     const res = await axios.post('/api/login', user);
     if (res.status === 200 && res.data.code === 0) {
       commit(AUTH_SUCCESS, res.data.data)
       return
     }
-    commit(ERR_MSG, res.data.data)
+    commit(ERR_MSG, res.data.msg)
   }
 }

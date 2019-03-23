@@ -33,7 +33,7 @@ import './common.scss';
 
 import Logo from '@/components/logo/Logo';
 
-import { mapState } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'login',
@@ -47,8 +47,19 @@ export default {
     Logo
   },
   methods: {
-    login() {
-      console.log(this.username)
+    ...mapActions(['loginAction']),
+    ...mapGetters(['getErrMsg']),
+    async login() {
+      const { username, password } = this;
+      await this.loginAction({ username, password });
+      // 如果登录成功，跳转到相应的路由
+      if (!this.getErrMsg()) {
+        let { redirectTo } = this.$store.state.user;
+        this.$router.push(redirectTo)
+        return
+      }
+      // 如果有errMsg，则提示报错信息
+      this.$Message.info(this.getErrMsg())
     },
     register() {
       this.$router.push('/register')

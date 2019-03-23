@@ -2,7 +2,7 @@ const Router = require('koa-router');
 const router = new Router();
 const model = require('./model');
 const User = model.getModel('user');
-// const _filter = {'password': 0};
+const _filter = {'password': 0, '__v': 0};
 
 // // 注册
 // router.get('/register', async ctx => {
@@ -59,12 +59,12 @@ router.post('/register', async ctx => {
  */
 router.post('/login', async ctx => {
   const { username, password } = ctx.request.body;
-  const loginRes = await User.find({username, password});
+  const loginRes = await User.find({username, password}, _filter);
   if (!loginRes.length) {
     ctx.body = {code: 1, msg: '用户名或密码错误, 请重新输入'}
     return
   } 
-  ctx.body = {code: 0, data: loginRes}
+  ctx.body = {code: 0, data: loginRes[0]}
 })
 
 
