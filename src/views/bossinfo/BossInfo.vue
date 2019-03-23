@@ -76,7 +76,7 @@ export default {
     SelectAvatar
   },
   methods: {
-    ...mapActions(['completeInfo']),
+    ...mapActions(['completeInfoAction']),
     // 接收子组件传递过来的头像值
     receiveAvatar(val) {
       this.avatar = val
@@ -87,7 +87,7 @@ export default {
         this.$Message.info('信息请填写完整')
         return
       }
-      await this.completeInfo({ avatar, company, title, money, desc })
+      await this.completeInfoAction({ avatar, company, title, money, desc })
       // 获取vuex中的redirectTo值，根据redirectTo来跳转页面
       let { redirectTo } = this.$store.state.user;
       this.$router.push(redirectTo)
