@@ -6,5 +6,8 @@
 export default {
   getErrMsg({user}) {
     return user.msg
-  }
+  },
+  getUserInfo({user}) {
+    return user
+  },
 }
