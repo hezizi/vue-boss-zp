@@ -25,7 +25,7 @@ router.get('/delete', async ctx => {
 router.post('/register', async ctx => {
   const { username, password, type } = ctx.request.body;
   const findRes = await User.find({username});
-  // 查询结果不为空时，提示邮箱已注册
+  // 查询结果不为空时，提示用户已注册
   if (findRes.length) {
     ctx.body = {code: 1, msg: '该用户已注册'};
     return
@@ -46,8 +46,9 @@ router.post('/register', async ctx => {
       ctx.body = {code: 1, msg: '后端出错了'}
       // return {code: 1, msg: '后端出错了'}
     })
-    ctx.cookies.set('userId', newUser._id);
     const { _id } = newUser;
+    // 设置cookies
+    ctx.cookies.set('userId', _id);
     ctx.body = {code: 0, data: {username, type, _id}}
 })
 

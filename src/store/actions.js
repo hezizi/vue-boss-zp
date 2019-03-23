@@ -51,5 +51,7 @@ export default {
       return
     } 
     commit(ERR_MSG, res.data.msg)
-  }
+  },
+  // 登录
+  
 }
