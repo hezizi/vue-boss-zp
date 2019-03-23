@@ -4,10 +4,10 @@
  */
 
 export default {
-  getErrMsg({user}) {
+  getErrMsg({ user }) {
     return user.msg
   },
-  getUserInfo({user}) {
-    return user
-  },
+  getUserId({ userId }) {
+    return userId
+  }
 }

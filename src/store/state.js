@@ -4,5 +4,6 @@
 
 export default {
   // loading: false,
-  user: {}
+  user: {},
+  userId: localStorage.getItem('userId') ? localStorage.getItem('userId') : ''
 }

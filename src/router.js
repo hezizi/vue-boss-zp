@@ -4,6 +4,7 @@ import Login from "./views/login-register/Login";
 import Register from "./views/login-register/Register";
 import BossInfo from "./views/bossinfo/BossInfo";
 import GenuisInfo from "./views/genuisinfo/GenuisInfo";
+import NotFound from "./views/404/NotFound";
 
 Vue.use(Router);
 
@@ -13,7 +14,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/login'
+      redirect: '/register'
     },
     {
       path: "/login",
@@ -34,6 +35,10 @@ export default new Router({
       path: "/genuisinfo",
       name: "genuisinfo",
       component: GenuisInfo
+    },
+    {
+      path: "*",
+      component: NotFound
     }
   ]
 });

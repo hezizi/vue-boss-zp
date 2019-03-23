@@ -14,7 +14,11 @@ export default {
   
   // 验证通过将用户信息保存到 state 中
   [AUTH_SUCCESS] (state, user) {
-    state.user = {...user, redirectTo: Utils.getRedirectPath(user)}
+    localStorage.setItem('userId', user._id)
+    state.user = {
+      ...user, 
+      redirectTo: Utils.getRedirectPath(user)
+    };
   },
   // 验证失败将错误信息保存到 state 中
   [ERR_MSG] (state, msg) {
