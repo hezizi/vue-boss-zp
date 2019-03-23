@@ -64,7 +64,7 @@ export default {
     Logo
   },
   methods: {
-    ...mapActions(['userInfo']),
+    ...mapActions(['register']),
     ...mapGetters(['getErrMsg']),
     login() {
       this.$router.push('/login')
@@ -72,7 +72,7 @@ export default {
     // 使用 async await 保证commit mutation得到状态在返回给注册组件
     async register() {
       let { username, password, passwordSure, type } = this;
-      await this.userInfo({ username, password, passwordSure, type });
+      await this.register({ username, password, passwordSure, type });
       // 如果注册成功，则获取注册信息，跳转到相应的路由
       if (!this.getErrMsg()) {
         let { redirectTo } = this.$store.state.user;

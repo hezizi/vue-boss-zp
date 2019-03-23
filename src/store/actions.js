@@ -13,9 +13,9 @@ export default {
   //   commit('loading', val)
   // },
   
-  // 保存用户填写的相关信息
-  async userInfo({commit}, userInfo) {
-    const { username, password, passwordSure, type } = userInfo;
+  // 注册action
+  async register({commit}, user) {
+    const { username, password, passwordSure, type } = user;
     if (!username) {
       commit(ERR_MSG, '请填写用户名')
       return
@@ -43,7 +43,7 @@ export default {
       commit(ERR_MSG, res.data.msg)
     }
   },
-  // 保存用户完善信息
+  // 保存用户完善信息action
   async completeInfo({commit}, completeInfo) {
     const res = await axios.post('/api/completeinfo', completeInfo)
     if (res.status === 200 && res.data.code === 0) {
@@ -52,6 +52,13 @@ export default {
     } 
     commit(ERR_MSG, res.data.msg)
   },
-  // 登录
-  
+  // 登录action
+  async login({commit}, user) {
+    const res = await axios.post('/api/login', user);
+    if (res.status === 200 && res.data.code === 0) {
+      commit(AUTH_SUCCESS, res.data.data)
+      return
+    }
+    commit(ERR_MSG, res.data.data)
+  }
 }
