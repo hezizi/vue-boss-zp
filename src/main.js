@@ -46,7 +46,11 @@ router.beforeEach((to, from, next) => {
     }
     // 如果未匹配到路由
     if (!to.name) {
-      next({path: from.path})
+      // next({path: from.path})
+      // if (!store.getters) {
+
+      // }
+      next('/')
       return
     }
     next()
