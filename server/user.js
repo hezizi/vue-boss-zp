@@ -74,7 +74,6 @@ router.post('/login', async ctx => {
  */
 router.post('/completeinfo', async ctx => {
   const userId = ctx.cookies.get('userId');
-  console.log(userId)
   if (!userId) {
     return
   }
