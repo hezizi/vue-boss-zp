@@ -36,7 +36,6 @@ import './config';
 // 全局路由守卫
 // 注意：参数 to from next 顺序严格要求
 router.beforeEach((to, from, next) => {
-  console.log(to, from)
   // 如果进入的目标 路由对象不是login或register，则判断是否有用户信息，没有则进行注册
   if (to.path !== '/login' && to.path !== '/register' && to.path !== '/') {
     // 没有用户id，则跳转登录页面
