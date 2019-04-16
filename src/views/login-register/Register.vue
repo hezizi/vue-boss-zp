@@ -38,6 +38,8 @@
       </RadioGroup>
       <Button type="primary" long @click="register">注册</Button>
       <Button type="default" long @click="login">登录</Button>
+
+      <!-- <h1>{{ userInfo }}</h1> -->
     </div>
   </div>
 </template>
@@ -48,7 +50,7 @@ import './common.scss';
 
 import Logo from '@/components/logo/Logo';
 
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
   name: 'register',
@@ -63,21 +65,36 @@ export default {
   components: {
     Logo
   },
+  // computed: mapState({
+  //   userInfo(state) {
+  //     return state.user
+  //   },
+  //   // userInfo: 'user'
+  // }),
+  
+  // computed: mapState(['user']),
+
+  // computed: {
+  //   ...mapState(['user'])
+  // },
   methods: {
     // action取名不能和事件名相同，否则报错
     ...mapActions(['registerAction']),
     ...mapGetters(['getErrMsg']),
+    ...mapState(['userInfo']),
     login() {
       this.$router.push('/login')
     },
     // 使用 async await 保证commit mutation得到状态在返回给注册组件
     async register() {
+      console.log(mapState(['userInfo']))
       let { username, password, passwordSure, type } = this;
+      console.log(this.registerAction({ username, password, passwordSure, type }), mapActions(['registerAction']))
       await this.registerAction({ username, password, passwordSure, type });
       // 如果注册成功，则获取注册信息，跳转到相应的路由
       if (!this.getErrMsg()) {
         let { redirectTo } = this.$store.state.user;
-        this.$router.push(redirectTo)
+        // this.$router.push(redirectTo)
         return
       }
       // 如果有errMsg，则提示报错信息
