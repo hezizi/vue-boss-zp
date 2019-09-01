@@ -55,7 +55,7 @@ router.post('/register', async ctx => {
 
 /**
  * @route POST /api/login
- * @desc 登录接口地址 放回token 
+ * @desc 登录接口地址 放回token
  */
 router.post('/login', async ctx => {
   const { username, password } = ctx.request.body;
@@ -63,7 +63,7 @@ router.post('/login', async ctx => {
   if (!loginRes.length) {
     ctx.body = {code: 1, msg: '用户名或密码错误, 请重新输入'}
     return
-  } 
+  }
   ctx.body = {code: 0, data: loginRes[0]}
 })
 
@@ -77,7 +77,7 @@ router.post('/completeinfo', async ctx => {
   if (!userId) {
     return
   }
-  
+
   /**
    * findByIdAndUpdate()
    * @params userId _id

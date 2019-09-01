@@ -7,7 +7,7 @@
         <Input
           v-model="username"
           placeholder="请输入用户名"
-          clearable 
+          clearable
         />
       </div>
       <div class="oh">
@@ -17,7 +17,7 @@
             v-model="password"
             type="password"
             placeholder="请输入用密码"
-            clearable 
+            clearable
           />
         </div>
       </div>
@@ -69,5 +69,5 @@ export default {
 </script>
 
 <style lang="" scoped>
-  
+
 </style>
